@@ -1,169 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        :root {
-            --bg: #0a0a0a;
-            --surface: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1a1;
-            --accent: #dc2626;
-            --accent-hover: #b91c1c;
-            --border: #1f1f1f;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Swiss Minimal</title>
+  <style>
+    /* TOKENS */
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1f1f1f;
+      --text-primary: #ffffff;
+      --text-secondary: #9b9b9b;
+      --accent: #dc2626;
+      --accent-hover: #b91c1c;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font: inherit;
+    }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            line-height: 1.6;
-            letter-spacing: -0.01em;
-        }
+    /* BASE */
+    html {
+      font-size: 16px;
+    }
 
-        .login-card {
-            width: 100%;
-            max-width: 380px;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            padding: 48px 40px;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        .login-header {
-            margin-bottom: 40px;
-        }
+    /* LAYOUT */
+    .page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 1.5rem;
+    }
 
-        .login-header h1 {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
+    /* CARD */
+    .card {
+      width: 100%;
+      max-width: 340px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: clamp(2rem, 6vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
 
-        .login-header p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
+    /* HEADER */
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
+    .card-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
 
-        .form-label {
-            display: block;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
+    .card-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
 
-        .form-input {
-            width: 100%;
-            background-color: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border);
-            padding: 12px 0;
-            color: var(--text-primary);
-            font-size: 15px;
-            transition: border-color 0.2s ease;
-        }
+    /* FORM */
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
 
-        .form-input:focus {
-            outline: none;
-            border-bottom-color: var(--accent);
-        }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
 
-        .form-input::placeholder {
-            color: var(--text-secondary);
-        }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-            font-size: 13px;
-        }
+    .field-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .field-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.625rem 0;
+      font-size: 0.95rem;
+      transition: border-color 160ms ease;
+    }
 
-        .checkbox-group input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--accent);
-        }
+    .field-input::placeholder {
+      color: var(--text-secondary);
+    }
 
-        .checkbox-group label {
-            color: var(--text-secondary);
-        }
+    .field-input:focus {
+      outline: none;
+      border-bottom-color: var(--accent);
+    }
 
-        .forgot-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+    /* ACTIONS */
+    .form-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
 
-        .forgot-link:hover {
-            color: var(--accent);
-        }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+    }
 
-        .login-button {
-            width: 100%;
-            background-color: var(--accent);
-            color: var(--text-primary);
-            border: none;
-            padding: 16px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            font-weight: 500;
-        }
+    .check-input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--accent);
+    }
 
-        .login-button:hover {
-            background-color: var(--accent-hover);
-        }
+    .link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
 
-        .signup-text {
-            text-align: center;
-            margin-top: 32px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
+    .link:hover {
+      color: var(--accent);
+    }
 
-        .signup-link {
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-            transition: color 0.2s ease;
-        }
+    /* BUTTON */
+    .btn {
+      width: 100%;
+      border: none;
+      background: var(--accent);
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 160ms ease;
+    }
 
-        .signup-link:hover {
-            color: var(--accent);
-        }
-    </style>
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+
+    /* FOOTER */
+    .card-footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .link-strong {
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.125rem;
+      transition: color 160ms ease;
+    }
+
+    .link-strong:hover {
+      color: var(--accent);
+    }
+  </style>
 </head>
+
 <body>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <h1>SEGUNDA BRANCH</h1>
     <p>paragrafo adicionado na branch main</p>
@@ -202,5 +238,44 @@
         </p>
     </div>
 >>>>>>> featureLogin
+=======
+  <main class="page">
+    <section class="card">
+      <header class="card-header">
+        <h1 class="card-title">Login</h1>
+        <p class="card-subtitle">Acesse sua conta</p>
+      </header>
+
+      <form class="form">
+        <div class="field-group">
+          <div class="field">
+            <label class="field-label" for="email">E-mail</label>
+            <input class="field-input" id="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="password">Senha</label>
+            <input class="field-input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="check">
+            <input class="check-input" id="remember" type="checkbox">
+            <span>Lembrar-me</span>
+          </label>
+          <a class="link" href="#">Esqueceu a senha?</a>
+        </div>
+
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+
+      <footer class="card-footer">
+        Não tem uma conta? <a class="link-strong" href="#">Cadastre-se</a>
+      </footer>
+    </section>
+  </main>
+>>>>>>> featureLogin
 </body>
+
 </html>
