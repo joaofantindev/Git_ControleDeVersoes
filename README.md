@@ -12,3 +12,7 @@
 - git branch -> branchs ativos
 - git push -f/-u origin branch
 ----
+
+- git branch checkout -b nome -> cria e ja muda a branch
+- git checkout nome -> cria outra
+
