@@ -1,11 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificações com GIT</title>
+    <title>Atelier Minimal — Swiss Design</title>
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .logo {
+            grid-column: 1 / 7;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.875rem;
+        }
+
+        nav {
+            grid-column: 7 / 13;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            font-size: 0.875rem;
+        }
+
+        nav a {
+            color: var(--black);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            padding: 10rem 0 8rem;
+        }
+
+        .hero h1 {
+            grid-column: 1 / 11;
+            font-size: clamp(3rem, 10vw, 9rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+        }
+
+        .intro {
+            padding: 4rem 0 8rem;
+        }
+
+        .intro-label {
+            grid-column: 1 / 4;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .intro-text {
+            grid-column: 4 / 10;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+        }
+
+        .projects {
+            padding: 4rem 0 10rem;
+        }
+
+        .section-title {
+            grid-column: 1 / 13;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .project {
+            grid-column: span 6;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        }
+
+        .project-title {
+            font-size: clamp(1.25rem, 2vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .project-meta {
+            font-size: 0.875rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            padding: 4rem 0 3rem;
+            border-top: 1px solid var(--black);
+        }
+
+        .footer-info {
+            grid-column: 1 / 7;
+            font-size: 0.875rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .footer-year {
+            grid-column: 7 / 13;
+            text-align: right;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 1024px) {
+            .project {
+                grid-column: 1 / 13;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                grid-column: 1 / 13;
+                margin-bottom: 1rem;
+            }
+
+            nav {
+                grid-column: 1 / 13;
+                justify-content: flex-start;
+                gap: 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 0 5rem;
+            }
+
+            .hero h1 {
+                grid-column: 1 / 13;
+            }
+
+            .intro-label {
+                grid-column: 1 / 13;
+                margin-bottom: 2rem;
+            }
+
+            .intro-text {
+                grid-column: 1 / 13;
+            }
+
+            .footer-info {
+                grid-column: 1 / 13;
+            }
+
+            .footer-year {
+                grid-column: 1 / 13;
+                text-align: left;
+                margin-top: 2rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>arquivo geral de commit</h1>
+    <header class="grid">
+        <div class="logo">Atelier Minimal</div>
+        <nav>
+            <a href="#projetos">Projetos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero grid">
+            <h1>Clareza através da restrição.</h1>
+        </section>
+
+        <section class="intro grid" id="sobre">
+            <div class="intro-label">Sobre</div>
+            <div class="intro-text">
+                Inspirado no International Typographic Style. Priorizamos tipografia, malha modular, espaço negativo
+                e uma hierarquia estritamente funcional.
+            </div>
+        </section>
+
+        <section class="projects grid" id="projetos">
+            <div class="section-title">Projetos Selecionados</div>
+            <article class="project">
+                <h2 class="project-title">Sistema Gráfico Modular</h2>
+                <p class="project-meta">Identidade Visual / 2026</p>
+            </article>
+            <article class="project">
+                <h2 class="project-title">Tipografia Editorial</h2>
+                <p class="project-meta">Publicação Impressa / 2026</p>
+            </article>
+            <article class="project">
+                <h2 class="project-title">Sinalização e Wayfinding</h2>
+                <p class="project-meta">Arquitetura / 2026</p>
+            </article>
+            <article class="project">
+                <h2 class="project-title">Interface Minimalista</h2>
+                <p class="project-meta">Produto Digital / 2026</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="grid" id="contato">
+        <div class="footer-info">
+            <span>contato@atelierminimal.com</span>
+            <span>+55 (00) 00000-0000</span>
+        </div>
+        <div class="footer-year">© 2026 Atelier Minimal</div>
+    </footer>
 </body>
+
 </html>
